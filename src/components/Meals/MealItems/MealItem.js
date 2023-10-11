@@ -1,5 +1,16 @@
-import Input from "../../UI/Input";
+import MealItemForm from "./MealItemForm"
+import { useContext } from "react";
+import { cartContext } from "../../../context/CartContextProvider";
 let MealItem = (props) => {
+    let cartCtx = useContext(cartContext)
+    let AddToCartHandler = (amount) => {
+        cartCtx.Add({
+            name:props.name,
+            id:props.id,
+            amount:amount,
+            price:props.price
+        })
+    }
     return (
         <>
             <div className="d-flex justify-content-between align-items-center">
@@ -10,22 +21,9 @@ let MealItem = (props) => {
                         <h5 className="pt-3 fw-bolder" style={{color:"orange"}}>{`$${props.price.toFixed(2)}`}</h5>
                     </li>
                 </div>
-                <div className="">
-                    <Input
-                    label='Amount' 
-                    input={{
-                        id:'amount_' + props.id,
-                        type:"number",
-                        min:"1",
-                        max:"10",
-                        step:"1",
-                        defaultValue:"1"
-                    }}>
-                    </Input>
-                    <input type="button" value="  + Add  " className="btn btn-warning rounded-5 mt-2 ms-2"></input>
-                </div>
+                <MealItemForm AddToCart={AddToCartHandler}></MealItemForm>
             </div>
-        <hr></hr>
+            <hr />
         </>
     )
 }

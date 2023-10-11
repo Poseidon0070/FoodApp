@@ -1,10 +1,11 @@
-let Input = (props) => {
+import React from "react";
+let Input = (props,ref) => {
     return (
         <div>
             <label htmlFor={props.id} className="fw-bold fs-5 me-3">{props.label}</label>
-            <input {...props.input} className="rounded-1"/>
+            <input ref={ref} {...props.input} className="rounded-1"/>
         </div>
     )
 }
 
-export default Input;
+export default React.forwardRef(Input);
