@@ -4,6 +4,7 @@ import style from "./CartButton.module.css"
 import Modal from "../UI/Modal"
 import { useContext } from "react"
 import { cartContext } from "../../context/CartContextProvider"
+import CartItem from "./CartItem"
 let CartButton = () => {
     let [open,setModal] = useState(false)
     let cartCtx = useContext(cartContext)
@@ -14,17 +15,20 @@ let CartButton = () => {
         <>
             <button className={style['Cartbtn']} onClick={() => setModal(true)}>
                 <span><CartIcon></CartIcon></span>
-                <span className="fw-bold">&nbsp;&nbsp;Your Cart&nbsp;&nbsp;</span>
+                <span className="fw-bold">&nbsp;Your Cart&nbsp;</span>
                 <span className={style['count']}>{totalItems}</span>
             </button>
             <Modal open={open} onClose={() => setModal(false)}>
-                <div>
+                <div className="mt-3">
                     {cartCtx.items.map((item) => {
-                        return <h4>{item}</h4>
+                        console.log(item)
+                        return (
+                            <CartItem item={item}></CartItem>
+                        )
                     })}
-                    <div className="d-flex justify-content-between">
-                        <h2 className="fw-bold">Total Amount</h2>
-                        <h2 className="fw-bold">{totalAmount}</h2>
+                    <div className="d-flex justify-content-between mt-4">
+                        <h2 className="fw-bold h3">Total Amount</h2>
+                        <h2 className="fw-bold h4">{totalAmount}</h2>
                     </div>
                     <div className="d-flex flex-row-reverse">
                         <input type="button" className="btn btn-lg btn-outline-warning rounded-5" value=" Close " onClick={() => setModal(false)}></input>

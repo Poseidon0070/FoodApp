@@ -1,6 +1,7 @@
 import MealItemForm from "./MealItemForm"
-import { useContext } from "react";
-import { cartContext } from "../../../context/CartContextProvider";
+import { useContext } from "react"
+import { cartContext } from "../../../context/CartContextProvider"
+
 let MealItem = (props) => {
     let cartCtx = useContext(cartContext)
     let AddToCartHandler = (amount) => {
@@ -11,6 +12,7 @@ let MealItem = (props) => {
             price:props.price
         })
     }
+
     return (
         <>
             <div className="d-flex justify-content-between align-items-center">

@@ -6,9 +6,11 @@ let MealItemForm = (props) => {
     let amountRef = useRef(null)
     let submitHandler = (event) => {
         event.preventDefault()
-        let amount = +(amountRef.current.value)
+        let amount = amountRef.current.value
+        let amountNumber = +(amount)
+        if(amountNumber === 0 || amount.trim.length === '' || amountNumber > 5) return ;
         console.log(amount)
-        props.AddToCart(amount)
+        props.AddToCart(amountNumber)
     }
     return (
         <form onSubmit={submitHandler}>
