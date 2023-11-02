@@ -1,7 +1,7 @@
 import  ReactDOM  from "react-dom";
 let MODAL_STYLE = {
     position: "fixed",
-    top: "50%", 
+    top: "45%", 
     left: "50%",
     transform: "translate(-50%, -50%)",
     backgroundColor: "#FFF",
@@ -31,9 +31,9 @@ let Modal = ({open,children,onClose}) => {
         <>
             <div style={OVERLAY_STYLE} onClick={onClose}/>
             <div style={MODAL_STYLE}>
-                <div className="d-flex">
+                {/* <div className="d-flex">
                     <button className="btn btn-close ms-auto" onClick={onClose}></button>
-                </div> 
+                </div>  */}
                 {children}
             </div>
         </>,

@@ -1,8 +1,7 @@
 import { useContext } from "react";
-import { cartContext } from "../../context/CartContextProvider";
 
 let CartItem = (props) => {
-    let cartCtx = useContext(cartContext)
+
     return (
         <div>
             <div className="d-flex">
@@ -14,8 +13,8 @@ let CartItem = (props) => {
                     </div>
                 </div>
                 <div className="ms-auto mt-3">
-                    <button className="fw-bolder btn btn-danger" style={{width:"50px"}} onClick={cartCtx.Remove}>-</button>
-                    <button className="fw-bolder ms-4 btn btn-danger" style={{width:"50px"}} onClick={cartCtx.Add}>+</button>
+                    <button className="fw-bolder btn btn-danger" style={{width:"50px"}} onClick={props.remove}>-</button>
+                    <button className="fw-bolder ms-4 btn btn-danger" style={{width:"50px"}} onClick={props.addItem}>+</button>
                 </div>
             </div>
             <hr />

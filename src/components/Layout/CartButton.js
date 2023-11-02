@@ -11,6 +11,15 @@ let CartButton = () => {
     let totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
     let totalItems = cartCtx.items.length;
     let hasItem = cartCtx.items.length > 0
+
+    let addItemHandler = (item) => {
+        cartCtx.Add(item)
+    }
+
+    let removeItemHandler = (id) => {
+        cartCtx.Remove(id)
+    }
+
     return (
         <>
             <button className={style['Cartbtn']} onClick={() => setModal(true)}>
@@ -23,7 +32,7 @@ let CartButton = () => {
                     {cartCtx.items.map((item) => {
                         console.log(item)
                         return (
-                            <CartItem item={item}></CartItem>
+                            <CartItem item={item} addItem={addItemHandler.bind(null,item)} remove={removeItemHandler.bind(null,item.id)}></CartItem>
                         )
                     })}
                     <div className="d-flex justify-content-between mt-4">
@@ -31,8 +40,8 @@ let CartButton = () => {
                         <h2 className="fw-bold h4">{totalAmount}</h2>
                     </div>
                     <div className="d-flex flex-row-reverse">
-                        <input type="button" className="btn btn-lg btn-outline-warning rounded-5" value=" Close " onClick={() => setModal(false)}></input>
-                        {hasItem && <input type="button" className="btn btn-lg btn-warning rounded-5 me-4 " value=" Order "></input>}
+                        <input type="button" className="btn btn-lg btn-outline-warning rounded-5 fw-semibold" value=" Close " onClick={() => setModal(false)}></input>
+                        {hasItem && <input type="button" className="btn btn-lg btn-warning rounded-5 me-4 fw-semibold" value=" Order "></input>}
                     </div>
                 </div>
             </Modal>

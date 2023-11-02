@@ -26,7 +26,7 @@ let MealItemForm = (props) => {
                     defaultValue:"1"
                 }}>
             </Input>
-            <input type="submit" value="  +Add  " className="btn btn-warning rounded-5 mt-2 ms-2"></input>
+            <input type="submit" value="  +Add  " className="btn btn-lg btn-warning rounded-5 mt-3 ms-2"></input>
         </form>
     )
 }
