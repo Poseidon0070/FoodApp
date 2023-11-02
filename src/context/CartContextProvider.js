@@ -15,7 +15,6 @@ let cartReducer = (cartState,action) => {
         let newItemList = []
         for(const i in cartState.items){
             if(cartState.items[i].id === action.item.id){
-                console.log("here")
                 existingItemIndex = i;
             }
         }
@@ -34,8 +33,9 @@ let cartReducer = (cartState,action) => {
             totalAmount : newTotalAmount
         })
     }
-    if(action.type === 'REMOVE'){
+    else if(action.type === 'Remove'){
         let itemIndex = -1;
+        console.log("here")
         for(let i in cartState.items){
             if(cartState.items[i].id === action.id){
                 itemIndex = i;
@@ -67,6 +67,7 @@ let CartContextProvider = (props) => {
         dispatch({type:"ADD", item:item})
     }
     let removeItem = (id) => {
+        console.log(id)
         dispatch({type:"Remove", id:id})
     }
     return (

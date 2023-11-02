@@ -9,14 +9,15 @@ let CartButton = () => {
     let [open,setModal] = useState(false)
     let cartCtx = useContext(cartContext)
     let totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
-    let totalItems = cartCtx.items.length;
+    let totalItems = cartCtx.items.reduce((acc, item) => acc+item.amount, 0)
     let hasItem = cartCtx.items.length > 0
 
     let addItemHandler = (item) => {
-        cartCtx.Add(item)
+        cartCtx.Add({...item, amount:1})
     }
 
     let removeItemHandler = (id) => {
+        // console.log(id)
         cartCtx.Remove(id)
     }
 
@@ -30,15 +31,29 @@ let CartButton = () => {
             <Modal open={open} onClose={() => setModal(false)}>
                 <div className="mt-3">
                     {cartCtx.items.map((item) => {
-                        console.log(item)
                         return (
-                            <CartItem item={item} addItem={addItemHandler.bind(null,item)} remove={removeItemHandler.bind(null,item.id)}></CartItem>
+                            <CartItem 
+                                key={item.id}
+                                id={item.id}
+                                name={item.name}
+                                price={item.price} 
+                                amount={item.amount}
+                                addItem={addItemHandler.bind(null,item)} 
+                                remove={removeItemHandler.bind(null,item.id)}>
+                            </CartItem>
                         )
                     })}
-                    <div className="d-flex justify-content-between mt-4">
-                        <h2 className="fw-bold h3">Total Amount</h2>
-                        <h2 className="fw-bold h4">{totalAmount}</h2>
-                    </div>
+                    {
+                        hasItem && 
+                        <div className="d-flex justify-content-between mt-4">
+                            <p className="fw-bold h3">Total Amount</p>
+                            <p className="fw-bold h4">{totalAmount}</p>
+                        </div>
+                    }
+                    {
+                        !hasItem && 
+                        <p className="fw-bold h3">Cart is Empty!</p>
+                    }
                     <div className="d-flex flex-row-reverse">
                         <input type="button" className="btn btn-lg btn-outline-warning rounded-5 fw-semibold" value=" Close " onClick={() => setModal(false)}></input>
                         {hasItem && <input type="button" className="btn btn-lg btn-warning rounded-5 me-4 fw-semibold" value=" Order "></input>}
