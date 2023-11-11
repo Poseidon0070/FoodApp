@@ -5,7 +5,8 @@ let cartContext = React.createContext({
     items : [],
     totalAmount : 0,
     Add : (item) => {},
-    Remove : (id) => {}
+    Remove : (id) => {},
+    Clear : () => {}
 })
 
 let cartReducer = (cartState,action) => {
@@ -56,6 +57,12 @@ let cartReducer = (cartState,action) => {
             totalAmount : newTotalAmount
         }
     }
+    else if(action.type === 'Clear'){
+        return {
+            items : [],
+            totalAmount : 0
+        }
+    }
 }
 
 let CartContextProvider = (props) => {
@@ -67,15 +74,18 @@ let CartContextProvider = (props) => {
         dispatch({type:"ADD", item:item})
     }
     let removeItem = (id) => {
-        console.log(id)
         dispatch({type:"Remove", id:id})
+    }
+    let clearCart = () => {
+        dispatch({type:"Clear"})
     }
     return (
         <cartContext.Provider value={{
             items:cartState.items,
             totalAmount:cartState.totalAmount,
             Add:addItem,
-            Remove:removeItem
+            Remove:removeItem,
+            Clear:clearCart
         }}>
             {props.children}
         </cartContext.Provider>

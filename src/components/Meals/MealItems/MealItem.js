@@ -18,9 +18,9 @@ let MealItem = (props) => {
             <div className="d-flex justify-content-between align-items-center">
                 <div>
                     <li style={{listStyle:"none"}} className="mt-4">
-                        <h2>{props.name}</h2>
-                        <span className="fst-italic d-block fw-bold">{props.description}</span>
-                        <h5 className="pt-3 fw-bolder" style={{color:"orange"}}>{`$${props.price.toFixed(2)}`}</h5>
+                        <p className="h1 fw-medium--dark">{props.name}</p>
+                        <span className="fst-italic d-block fw-bold fs-5">{props.description}</span>
+                        <h5 className="pt-3 fw-bolder fs-4" style={{color:"orange"}}>{`$${props.price.toFixed(2)}`}</h5>
                     </li>
                 </div>
                 <MealItemForm AddToCart={AddToCartHandler}></MealItemForm>

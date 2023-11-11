@@ -31,9 +31,6 @@ let Modal = ({open,children,onClose}) => {
         <>
             <div style={OVERLAY_STYLE} onClick={onClose}/>
             <div style={MODAL_STYLE}>
-                {/* <div className="d-flex">
-                    <button className="btn btn-close ms-auto" onClick={onClose}></button>
-                </div>  */}
                 {children}
             </div>
         </>,

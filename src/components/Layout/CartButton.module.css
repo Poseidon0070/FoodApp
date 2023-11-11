@@ -4,6 +4,7 @@
     height: 70px;
     line-height: 64px;
     background: #392d20;
+    opacity: 0.85;
     padding: 0px 30px;
     border-radius: 999em;
     text-decoration: none;
@@ -15,8 +16,16 @@
     letter-spacing: 2px;
     box-shadow: 0px 0px 0px -4px rgba(0,0,0,0.8);
     transition-property: transform, box-shadow;
-    transition: 300ms;
+    transition: 200ms;
 }
+
+.Cartbump{
+    /* transition: property duration timing-function delay|initial|inherit; */
+    transition : transform 300ms ease-in-out;
+    transform: scale(1.1);
+}
+
+
 
 .Cartbtn:hover{
     transform: scale(1.02);
