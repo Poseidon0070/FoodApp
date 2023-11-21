@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "food-order-app-81bdd",
+    "Food-app": "food-order-app-81bdd"
+  },
+  "targets": {},
+  "etags": {}
+}

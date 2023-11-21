@@ -1,5 +1,5 @@
 import React from "react"
-import img from "../../assets/meals.jpg"
+import img from "../../assets/meals2.jpg"
 import CartButton from "./CartButton";
 import style from "./CartButton.module.css"
 
@@ -18,7 +18,8 @@ let Header = () => {
                         width: "110%",
                         height: "45vh",
                         objectFit: 'cover',
-                        zIndex:"1"
+                        zIndex:"1",
+                        filter:"brightness(80%)"
                     }}
                     className={style['rotated-image']}
                     alt="Meals">
